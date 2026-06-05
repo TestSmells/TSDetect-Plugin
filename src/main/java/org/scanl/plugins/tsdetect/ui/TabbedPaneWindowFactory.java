@@ -15,7 +15,7 @@ public class TabbedPaneWindowFactory implements ToolWindowFactory {
 	@Override
 	public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
 		SmellTabbedPaneWindow myToolWindow = new SmellTabbedPaneWindow();
-		ContentFactory contentFactory = ContentFactory.SERVICE.getInstance();
+		ContentFactory contentFactory = ContentFactory.getInstance();
 		Content content = contentFactory.createContent(myToolWindow.getContent(), "", false);
 		toolWindow.getContentManager().addContent(content);
 		//Method loaded here to ensure the user is prompted before the tool is run, without showing the popup multiple times
