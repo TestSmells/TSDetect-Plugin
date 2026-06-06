@@ -1,5 +1,6 @@
 package org.scanl.plugins.tsdetect;
 
+import com.intellij.execution.PsiLocation;
 import com.intellij.execution.junit.JUnitUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -27,6 +28,7 @@ public abstract class InspectionTest extends LightJavaCodeInsightFixtureTestCase
         junitUtil = Mockito.mockStatic(JUnitUtil.class);
         junitUtil.when(() -> JUnitUtil.isTestClass(Mockito.any(PsiClass.class))).thenReturn(true);
         junitUtil.when(() -> JUnitUtil.isTestClass(Mockito.argThat(c -> c.getName().equals("TestClass")))).thenReturn(false);
+        junitUtil.when(() -> JUnitUtil.isTestMethod(Mockito.any(PsiLocation.class))).thenReturn(true);
     }
 
     @Override
