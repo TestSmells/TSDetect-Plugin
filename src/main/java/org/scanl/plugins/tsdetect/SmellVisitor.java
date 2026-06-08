@@ -33,9 +33,9 @@ public class SmellVisitor extends JavaRecursiveElementVisitor {
 
 		for(Class<? extends LocalInspectionTool> c : classes){ //converts from .class files into SmellInspection objects
 			try {
-				SmellInspection a = (SmellInspection) c.newInstance();
+				SmellInspection a = (SmellInspection) c.getDeclaredConstructor().newInstance();
 				inspections.add(a);
-			} catch (InstantiationException | IllegalAccessException e) {
+			} catch (Exception e) {
 				logger.error(e);
 			}
 		}
